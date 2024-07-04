@@ -6,8 +6,9 @@ import path from "path";
 
 /** Fetch pictures */
 const publicDirectory = path.join(process.cwd(), "public", "pics");
-const files = await getFiles(publicDirectory);
-const pictures = files.map((file) => path.relative(publicDirectory, file));
+let files: any = await getFiles(publicDirectory);
+const pictures = files.map((file: any) => path.relative(publicDirectory, file));
+files = null;
 const lastPage = pictures.length;
 
 const pageHandler = frames(async (ctx) => {
